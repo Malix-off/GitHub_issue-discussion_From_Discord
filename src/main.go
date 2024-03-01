@@ -4,6 +4,7 @@ import (
 	// standard
 	"log/slog"
 	"os"
+	"runtime"
 
 	// external
 	"github.com/disgoorg/disgo"
@@ -16,7 +17,11 @@ var (
 
 func main() {
 	slog.Info("Start")
-	slog.Info("DisGo", slog.String("version", disgo.Version))
+
+	slog.Info("Verions",
+		slog.String("Go", runtime.Version()),
+		slog.String("DisGo", disgo.Version),
+	)
 
 	disgo.New(
 		TOKEN,
