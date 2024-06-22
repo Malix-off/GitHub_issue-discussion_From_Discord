@@ -1,21 +1,24 @@
 package http
 
 import (
-	// standard
+	// Standard
 	"context"
 	"log/slog"
 	"runtime"
 
-	// internal
-	"github.com/Malix-off/Discord_GitHub-Utilities/src/internal/environment"
+	// Custom
 	"github.com/Malix-off/Discord_GitHub-Utilities/src/pkg/errorHandling"
 
-	// external
+	// External
 	"github.com/disgoorg/disgo"
 	"github.com/disgoorg/disgo/bot"
 	_ "github.com/disgoorg/disgo/discord"
 	_ "github.com/disgoorg/disgo/events"
 	"github.com/disgoorg/disgo/httpserver"
+
+	// Internal
+	_ "github.com/Malix-off/Discord_GitHub-Utilities/src/internal/commands"
+	"github.com/Malix-off/Discord_GitHub-Utilities/src/internal/environment"
 )
 
 func main() {
