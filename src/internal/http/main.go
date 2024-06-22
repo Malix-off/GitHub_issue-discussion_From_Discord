@@ -3,7 +3,6 @@ package http
 import (
 	// standard
 	"context"
-	"crypto/ed25519"
 	"log/slog"
 	"runtime"
 
@@ -26,11 +25,6 @@ func main() {
 		slog.String("Go", runtime.Version()),
 		slog.String("DisGo", disgo.Version),
 	)
-
-	// use custom ed25519 verify implementation
-	httpserver.Verify = func(publicKey httpserver.PublicKey, message, sig []byte) bool {
-		return ed25519.Verify(publicKey, message, sig)
-	}
 
 	client, err := disgo.New(
 		environment.TOKEN,
