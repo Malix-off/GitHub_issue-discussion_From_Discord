@@ -24,9 +24,24 @@ import (
 func main() {
 	slog.Info("Start")
 
-	slog.Info("Versions",
-		slog.String("Go", runtime.Version()),
-		slog.String("DisGo", disgo.Version),
+	slog.Info("System",
+		slog.Group(
+			"OS",
+
+			slog.String("Arch", runtime.GOARCH),
+			slog.String("Name", runtime.GOOS),
+		),
+		slog.Group(
+			"Go",
+
+			slog.String("Compiler", runtime.Compiler()),
+			slog.String("Version", runtime.Version()),
+		),
+		slog.Group(
+			"Packages",
+
+			slog.String("disgo", disgo.Version),
+		),
 	)
 
 	client, err := disgo.New(
